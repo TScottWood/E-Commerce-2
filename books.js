@@ -1,10 +1,16 @@
-function renderBooks() {
-  const booksWrapper = document.querySelector('.books');
+function renderBooks(filter) {
+  const booksWrapper = document.querySelector(".books");
 
   const books = getBooks();
 
+
+  if (filter === 'LOW_TO_HIGH') {
+    console.log(filter)
+
+  }
+
   const booksHtml = books.map(book => {
-    console.log(book)
+ 
     return `<div class="book">
     <figure class="book__img--wrapper">
       <img class="book__img" src="${book.url}" alt="">
@@ -26,11 +32,11 @@ function renderBooks() {
   })
   .join("");
 
-  booksWrapper.innerHTML = booksHtml;
-}
+  booksWrapper.innerHTML = booksHtml
 
-function filterBooks() {
-  console.log('filterBooks')
+
+function filterBooks(event) {
+    renderBooks(event.target.value);
 }
 
 setTimeout(() => {
